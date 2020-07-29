@@ -16,6 +16,11 @@ type messager interface {
 	SendMessageReserved()
 }
 
+type orderer interface {
+	Reserved(uidGood string) (status bool)
+	Returned(uidGood string) (status bool)
+}
+
 type orderFacade struct {
 	stock   stocker
 	message messager
